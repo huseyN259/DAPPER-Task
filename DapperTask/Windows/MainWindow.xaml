@@ -1,0 +1,76 @@
+﻿<Window x:Class="DapperTask.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:materialDesign="http://materialdesigninxaml.net/winfx/xaml/themes" 
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DapperTask"
+        mc:Ignorable="d"
+        Title="Online Shop" Height="450" Width="800" Icon="/Images/icons8-shop-16.png">
+    <Grid Background="Gray">
+        <Grid.RowDefinitions>
+            <RowDefinition Height="60"/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <StackPanel Orientation="Horizontal" HorizontalAlignment="Stretch">
+            <TextBox
+                IsEnabled="{Binding CheckDb}"
+                x:Name="txtSearch" materialDesign:HintAssist.Hint="Search"
+                BorderThickness="0"
+                MinWidth="130" VerticalAlignment="Center"/>
+            <Button Margin="10" HorizontalAlignment="Right" Name="btnSearch" ToolTip="Refresh Data" IsEnabled="{Binding CheckDb}" Click="btnSearch_Click">
+                <materialDesign:PackIcon Kind="Search"/>
+            </Button>
+            <Button
+                Name="btnAdd"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Content="ADD" Margin="10" Click="btnAdd_Click"/>
+            <Button
+                x:Name="btnDelete"
+                Style="{StaticResource MaterialDesignRaisedDarkButton}"
+                Content="DELETE" Margin="10" Click="btnDelete_Click"/>
+            <Button Margin="10" Name="btnDatabaseCreate" Content="CREATE DATABASE" Click="btnDatabaseCreate_Click"></Button>
+            <Button Margin="10" HorizontalAlignment="Right" Name="btnGetData" ToolTip="GetInfo Data" IsEnabled="{Binding CheckDb}" Click="btnGetData_Click">
+                <materialDesign:PackIcon Kind="DatabaseCheck"/>
+            </Button>
+        </StackPanel>
+        <ListView 
+            MouseDoubleClick="DbInfo_MouseDoubleClick"
+            Name="DbInfo" Grid.Row="1" 
+            ItemsSource="{Binding Products}">
+            <ListView.View>
+                <GridView>
+                    <GridViewColumn Header="Id">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock MinWidth="40" Text="{Binding Id}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Name">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Name}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Country" Width="90">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Country}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                    <GridViewColumn Header="Cost">
+                        <GridViewColumn.CellTemplate>
+                            <DataTemplate>
+                                <TextBlock Text="{Binding Cost}"/>
+                            </DataTemplate>
+                        </GridViewColumn.CellTemplate>
+                    </GridViewColumn>
+                </GridView>
+            </ListView.View>
+        </ListView>
+    </Grid>
+</Window>

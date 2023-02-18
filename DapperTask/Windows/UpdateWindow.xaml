@@ -1,0 +1,50 @@
+﻿<Window x:Class="DapperTask.Windows.UpdateWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:DapperTask.Windows"
+        mc:Ignorable="d"
+        Title="UpdateWindow" Height="450" Width="800">
+    <Grid Background="CornflowerBlue">
+        <Grid.RowDefinitions>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+            <RowDefinition/>
+        </Grid.RowDefinitions>
+
+        <TextBlock 
+            Style="{StaticResource CustomTextBlock}" 
+            Text="Name" HorizontalAlignment="Left" Margin="10 10 10 10" 
+            Background="Black" Foreground="GhostWhite" 
+            Width="70"/>
+        <TextBox Grid.Row="1" HorizontalAlignment="Left" Margin="10 10 10 10" Style="{StaticResource CustomTextBox}" Text="{Binding Product.Name,UpdateSourceTrigger=PropertyChanged}"/>
+
+        <TextBlock Grid.Row="2" 
+                   Style="{StaticResource CustomTextBlock}" 
+                   Text="Country" HorizontalAlignment="Left" Margin="10 10 10 10" 
+                   Background="Black" Foreground="GhostWhite"
+                   Width="100"/>
+        <TextBox Grid.Row="3" HorizontalAlignment="Left" Margin="10 10 10 10" Style="{StaticResource CustomTextBox}" Text="{Binding Product.Country,UpdateSourceTrigger=PropertyChanged}"/>
+
+        <TextBlock Grid.Row="4" 
+                   Style="{StaticResource CustomTextBlock}" 
+                   Text="Cost" HorizontalAlignment="Left" Margin="10 10 10 10" 
+                   Background="Black" Foreground="GhostWhite" Width="70"/>
+        <TextBox Grid.Row="5" HorizontalAlignment="Left" Margin="10 10 10 10" Style="{StaticResource CustomTextBox}" Text="{Binding Product.Cost,UpdateSourceTrigger=PropertyChanged}"/>
+
+        <Grid Grid.Row="6">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="100" Content="ADD"/>
+            <Button Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="100" Content="SAVE" Click="ButtonUpdate_Click"/>
+            <Button Grid.Column="1" Style="{StaticResource MaterialDesignRaisedDarkButton}" Width="100" Content="CANCEL" Click="ButtonCancel_Click"/>
+        </Grid>
+    </Grid>
+</Window>
